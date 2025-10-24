@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tower Climb - Pattern Reaction Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="screen active">
+        <div class="loading-content">
+            <h1>🏔️ Tower Climb</h1>
+            <p>Loading...</p>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- Home Screen -->
+    <div id="home-screen" class="screen">
+        <div class="container">
+            <h1>🏔️ Tower Climb</h1>
+            <p class="subtitle">How high can you climb?</p>
+
+            <div class="stats-card">
+                <div class="stat">
+                    <span class="stat-label">Best Floor</span>
+                    <span class="stat-value" id="best-floor">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">This Week</span>
+                    <span class="stat-value" id="week-best">0</span>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-large" id="start-btn">
+                Start Run
+            </button>
+
+            <div class="menu-buttons">
+                <button class="btn btn-secondary" id="practice-btn">Practice</button>
+                <button class="btn btn-secondary" id="leaderboard-btn">Leaderboard</button>
+            </div>
+
+            <div class="info">
+                <p id="week-info">Week #1 • 🌱 Fresh start</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <div class="game-container">
+            <!-- HUD -->
+            <div class="hud">
+                <div class="floor-display">
+                    <span class="floor-label">Floor</span>
+                    <span class="floor-number" id="current-floor">1</span>
+                </div>
+                <div class="timer-display">
+                    <div class="timer-bar" id="timer-bar"></div>
+                </div>
+            </div>
+
+            <!-- Pattern Display -->
+            <div class="pattern-display">
+                <div class="pattern-icon" id="pattern-icon">👆</div>
+                <div class="pattern-text" id="pattern-text">TAP</div>
+                <div class="pattern-direction" id="pattern-direction"></div>
+            </div>
+
+            <!-- Touch Area -->
+            <div class="touch-area" id="touch-area">
+                <div class="touch-hint">Touch here to interact</div>
+            </div>
+
+            <!-- Feedback -->
+            <div class="feedback" id="feedback"></div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="screen">
+        <div class="container">
+            <h1>Run Complete!</h1>
+
+            <div class="results-card">
+                <div class="result-main">
+                    <div class="result-label">Floor Reached</div>
+                    <div class="result-value" id="final-floor">0</div>
+                </div>
+
+                <div class="result-stats">
+                    <div class="result-stat">
+                        <span class="label">Time</span>
+                        <span class="value" id="final-time">0s</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="label">Avg Reaction</span>
+                        <span class="value" id="final-reaction">0ms</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="label">Perfect Rate</span>
+                        <span class="value" id="final-perfect">0%</span>
+                    </div>
+                </div>
+
+                <div class="new-best" id="new-best" style="display: none;">
+                    🎉 New Personal Best!
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-primary" id="play-again-btn">Play Again</button>
+                <button class="btn btn-secondary" id="home-btn">Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard Screen -->
+    <div id="leaderboard-screen" class="screen">
+        <div class="container">
+            <h1>🏆 Leaderboard</h1>
+
+            <div class="tabs">
+                <button class="tab active" data-scope="global">Global</button>
+                <button class="tab" data-scope="country">Country</button>
+                <button class="tab" data-scope="friends">Friends</button>
+            </div>
+
+            <div class="leaderboard-list" id="leaderboard-list">
+                <div class="loading">Loading leaderboard...</div>
+            </div>
+
+            <button class="btn btn-secondary" id="close-leaderboard-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="prng.js"></script>
+    <script src="pattern-generator.js"></script>
+    <script src="supabase-client.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

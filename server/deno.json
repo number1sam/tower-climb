@@ -1,0 +1,18 @@
+{
+  "tasks": {
+    "test": "deno test --allow-all shared/utils/",
+    "serve:start-run": "supabase functions serve start-run",
+    "serve:submit-run": "supabase functions serve submit-run",
+    "serve:get-leaderboard": "supabase functions serve get-leaderboard",
+    "deploy:all": "supabase functions deploy start-run submit-run get-leaderboard weekly-seed-reset",
+    "db:push": "supabase db push",
+    "db:reset": "supabase db reset"
+  },
+  "imports": {
+    "supabase": "https://esm.sh/@supabase/supabase-js@2"
+  },
+  "compilerOptions": {
+    "lib": ["deno.window", "dom"],
+    "strict": true
+  }
+}

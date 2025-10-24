@@ -1,0 +1,79 @@
+{
+  "version": "1.0.0",
+  "difficulty": {
+    "v0": 1.0,
+    "deltaV": 0.05,
+    "minWindow": 0.3,
+    "maxWindow": 2.0,
+    "baseWindow": 1.5,
+    "adaptiveEpsilon": 0.1,
+    "baseWeights": {
+      "tap": 0.3,
+      "swipe": 0.3,
+      "hold": 0.2,
+      "rhythm": 0.1,
+      "tilt": 0.05,
+      "doubleTap": 0.05
+    }
+  },
+  "antiCheat": {
+    "minHumanReactionMs": 100,
+    "maxReasonableReactionMs": 1500,
+    "minFloorTime": 5.0,
+    "maxFloorTime": 10.0,
+    "suspiciousStdDevThreshold": 10,
+    "replayWindowSeconds": 60
+  },
+  "progression": {
+    "unlocks": {
+      "10": "theme_retro",
+      "20": "theme_neon",
+      "30": "sfx_pack_cyber",
+      "50": "theme_minimal",
+      "75": "sfx_pack_orchestral",
+      "100": "theme_galaxy",
+      "150": "sfx_pack_synthwave"
+    },
+    "rankTiers": [
+      { "name": "Bronze", "minFloor": 0 },
+      { "name": "Silver", "minFloor": 15 },
+      { "name": "Gold", "minFloor": 30 },
+      { "name": "Platinum", "minFloor": 50 },
+      { "name": "Diamond", "minFloor": 75 },
+      { "name": "Master", "minFloor": 100 },
+      { "name": "Challenger", "minFloor": 150 }
+    ]
+  },
+  "missions": {
+    "daily": [
+      {
+        "id": "3_perfect_holds",
+        "description": "Achieve 3 perfect holds in a row",
+        "reward": "sfx_pack_minimal",
+        "target": 3,
+        "trackingKey": "consecutive_perfect_holds"
+      },
+      {
+        "id": "survive_60s",
+        "description": "Survive for 60 seconds",
+        "reward": "theme_ocean",
+        "target": 60,
+        "trackingKey": "runtime_seconds"
+      },
+      {
+        "id": "floor_20_no_miss",
+        "description": "Reach floor 20 without missing",
+        "reward": "theme_fire",
+        "target": 20,
+        "trackingKey": "floors_without_miss"
+      },
+      {
+        "id": "50_perfect_swipes",
+        "description": "Complete 50 perfect swipes",
+        "reward": "sfx_pack_nature",
+        "target": 50,
+        "trackingKey": "perfect_swipes"
+      }
+    ]
+  }
+}

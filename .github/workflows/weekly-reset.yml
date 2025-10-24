@@ -1,0 +1,43 @@
+name: Weekly Season Reset
+
+on:
+  schedule:
+    # Every Monday at 00:00 UTC (start of new week)
+    - cron: '0 0 * * 1'
+
+  # Allow manual triggering for testing
+  workflow_dispatch:
+
+jobs:
+  reset-season:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Call weekly-seed-reset Edge Function
+        run: |
+          response=$(curl -s -w "\n%{http_code}" -X POST \
+            ${{ secrets.SUPABASE_URL }}/functions/v1/weekly-seed-reset \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
+            -H "Content-Type: application/json")
+
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | head -n-1)
+
+          echo "Response: $body"
+          echo "HTTP Status: $http_code"
+
+          if [ "$http_code" -ne 200 ]; then
+            echo "❌ Failed to reset season"
+            exit 1
+          fi
+
+          echo "✅ Season reset successful"
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "⚠️ Weekly season reset failed!"
+          # Add notification logic here (Slack, Discord, email, etc.)
