@@ -1,0 +1,53 @@
+# Unity
+client/[Ll]ibrary/
+client/[Tt]emp/
+client/[Oo]bj/
+client/[Bb]uild/
+client/[Bb]uilds/
+client/[Ll]ogs/
+client/[Uu]ser[Ss]ettings/
+
+# Unity asset files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Unity specific
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Node/Deno
+node_modules/
+.env
+.env.local
+
+# Supabase
+server/.env
+server/supabase/.branches/
+server/supabase/.temp/
+
+# Build outputs
+web-build/
+*.apk
+*.aab
+*.ipa
